@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Billi's · Hidden Gem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#fdf6ec;--navy:#1d2b6b;--pink:#ff5a7a;--sun:#ffd84d;--white:#fff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--navy);font-family:"Space Mono",monospace;line-height:1.55;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+  .big{font-family:"Archivo Black",sans-serif;text-transform:uppercase;letter-spacing:-.03em;line-height:.88}
+  .stamp{display:inline-block;border:2.5px solid var(--navy);padding:12px 20px;font-family:"Archivo Black",sans-serif;text-transform:uppercase;font-size:15px;background:var(--sun);box-shadow:5px 5px 0 var(--navy);transition:transform .15s,box-shadow .15s}
+  .stamp:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--navy)}
+  .stamp.pink{background:var(--pink);color:var(--white)}
+
+  header .wrap{display:flex;justify-content:space-between;align-items:center;height:84px;font-size:13px;text-transform:uppercase}
+  .logo{font-family:"Archivo Black",sans-serif;font-size:24px;background:var(--pink);color:var(--paper);padding:4px 12px;transform:rotate(-2deg)}
+  nav{display:flex;gap:24px}
+  nav a:hover{color:var(--pink)}
+
+  .hero{position:relative;padding:32px 0 120px;min-height:680px}
+  .hero h1{font-size:clamp(44px,10.5vw,148px);position:relative;z-index:2}
+  .hero h1 span{color:var(--pink)}
+  .hero p{max-width:440px;font-size:16px;margin:30px 0;position:relative;z-index:2}
+  .pol{position:absolute;background:var(--white);padding:12px 12px 46px;box-shadow:0 16px 34px rgba(29,43,107,.22);z-index:1}
+  .pol p{position:absolute;left:0;right:0;bottom:12px;margin:0;text-align:center;font-size:13px}
+  .pol .ph{width:100%;height:100%}
+  .p1{right:40px;top:10px;width:300px;height:360px;transform:rotate(5deg)}
+  .p2{right:270px;top:370px;width:220px;height:250px;transform:rotate(-8deg)}
+  .p3{right:24px;top:430px;width:210px;height:230px;transform:rotate(4deg)}
+  .tape{position:absolute;top:-12px;left:50%;width:90px;height:26px;background:rgba(255,216,77,.8);transform:translateX(-50%) rotate(-4deg)}
+
+  .marquee{background:var(--navy);color:var(--sun);overflow:hidden;white-space:nowrap;padding:14px 0;border-top:3px solid var(--navy);border-bottom:3px solid var(--navy)}
+  .marquee span{display:inline-block;font-family:"Archivo Black",sans-serif;font-size:24px;text-transform:uppercase;animation:m 36s linear infinite}
+  @keyframes m{to{transform:translateX(-50%)}}
+
+  section{padding:96px 0}
+  .sec-title{font-size:clamp(44px,6vw,80px);margin-bottom:12px}
+  .sec-sub{margin-bottom:40px;max-width:520px}
+
+  .decoder{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .word{border:2.5px solid var(--navy);background:var(--white);box-shadow:6px 6px 0 var(--navy)}
+  .word .ph{height:180px;border-bottom:2.5px solid var(--navy)}
+  .word div.t{padding:18px}
+  .word b{font-family:"Archivo Black",sans-serif;font-size:22px;display:block;text-transform:uppercase}
+  .word i{font-size:12px;color:var(--pink)}
+  .word p{font-size:13px;margin-top:8px}
+  .word .pr{display:inline-block;margin-top:10px;background:var(--sun);padding:2px 8px;font-weight:700;font-size:13px}
+
+  .menu{background:var(--pink);color:var(--white)}
+  .menu .sec-title{color:var(--paper)}
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+  .card{background:var(--paper);color:var(--navy);border:2.5px solid var(--navy);box-shadow:6px 6px 0 var(--navy);padding:24px}
+  .card:nth-child(2n){transform:rotate(.8deg)}.card:nth-child(3n){transform:rotate(-.8deg)}
+  .card h3{font-family:"Archivo Black",sans-serif;text-transform:uppercase;font-size:26px;margin-bottom:10px;background:var(--sun);display:inline-block;padding:0 8px}
+  .row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1.5px dotted var(--navy);font-size:14px}
+  .row:last-child{border:0}
+  .row span:last-child{font-weight:700;white-space:nowrap}
+
+  .catering{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .cat-stack{position:relative;height:520px}
+  .cat-stack .pol{position:absolute}
+  .c1{left:0;top:0;width:300px;height:380px;transform:rotate(-5deg)}
+  .c2{left:220px;top:110px;width:320px;height:300px;transform:rotate(4deg)}
+  .c3{left:60px;top:300px;width:260px;height:220px;transform:rotate(2deg)}
+
+  .gallery{columns:4;column-gap:16px}
+  .gallery div{break-inside:avoid;margin-bottom:16px;border:2.5px solid var(--navy)}
+  .gallery img{height:auto}
+
+  .visit{background:var(--navy);color:var(--paper);text-align:center}
+  .visit .sec-title{color:var(--sun)}
+  .ticket{display:inline-grid;grid-template-columns:1fr 1fr;border:2.5px dashed var(--sun);margin:24px 0 36px;text-align:left}
+  .ticket div{padding:24px 32px}
+  .ticket div:first-child{border-right:2.5px dashed var(--sun)}
+  .ticket small{display:block;color:var(--pink);text-transform:uppercase;font-size:12px;font-weight:700}
+  .ticket p{font-size:18px}
+  footer{padding:28px 0;font-size:13px;text-transform:uppercase}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  @media (max-width:960px){
+    .wrap{padding:0 16px}
+    nav{display:none}
+    .hero{min-height:0;padding-bottom:56px}
+    .pol.p1,.pol.p2,.pol.p3{display:none}
+    .decoder,.menu-grid{grid-template-columns:1fr 1fr}
+    .catering{grid-template-columns:1fr}
+    .cat-stack{height:440px}.c1{width:220px;height:280px}.c2{left:130px;width:220px;height:220px}.c3{top:250px;width:200px;height:170px}
+    .gallery{columns:2}
+    .ticket{grid-template-columns:1fr}.ticket div:first-child{border-right:0;border-bottom:2.5px dashed var(--sun)}
+  }
+  @media (max-width:560px){.decoder,.menu-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">BILLI'S</a>
+    <nav><a href="#decoder">Decoder</a><a href="#menu">Menu</a><a href="#catering">Catering</a><a href="#visit">Find us</a></nav>
+    <a href="tel:+17343263800">☎ 734-326-3800</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1 class="big">Best<br>shawarma<br>at a <span>gas<br>station.</span></h1>
+    <p>(Honestly, just the best shawarma.) Next time you fill up on E Michigan Ave, come inside and grab something good.</p>
+    <a class="stamp" href="#menu">See the menu →</a>
+  </div>
+  <div class="pol p1"><span class="tape"></span><div class="ph"><img src="assets/platters.jpg" alt=""></div><p>the mix plate, obviously</p></div>
+  <div class="pol p2"><span class="tape"></span><div class="ph"><img src="assets/wraps.jpg" alt=""></div><p>wrap stack</p></div>
+  <div class="pol p3"><span class="tape"></span><div class="ph"><img src="assets/hummus.jpg" alt=""></div><p>hummus, always</p></div>
+</section>
+
+<div class="marquee"><span>✶ Hidden gem in Wayne, MI ✶ Big portions ✶ Fresh pita ✶ Garlic by the cup ✶ Catering trays ✶ Hidden gem in Wayne, MI ✶ Big portions ✶ Fresh pita ✶ Garlic by the cup ✶ Catering trays&nbsp;</span></div>
+
+<section id="decoder">
+  <div class="wrap">
+    <h2 class="big sec-title">Menu Decoder</h2>
+    <p class="sec-sub">New here? A quick guide to what to order beyond the gyro.</p>
+    <div class="decoder">
+      <div class="word"><div class="ph"><img src="assets/chicken-tray.jpg" alt=""></div><div class="t"><b>Shish Taouk</b><i>shish·ta·ook</i><p>Marinated chicken cubes, grilled on skewers.</p><span class="pr">$19.99</span></div></div>
+      <div class="word"><div class="ph"><img src="assets/mix-grill.jpg" alt=""></div><div class="t"><b>Kofta</b><i>kof·ta</i><p>Seasoned ground beef with parsley and onion, grilled.</p><span class="pr">$19.99</span></div></div>
+      <div class="word"><div class="ph"><img src="assets/grape-leaves.jpg" alt=""></div><div class="t"><b>Grape Leaves</b><i>war·ak e·nab</i><p>Vine leaves rolled around seasoned rice.</p><span class="pr">$8.99</span></div></div>
+      <div class="word"><div class="ph"><img src="assets/tabouli.jpg" alt=""></div><div class="t"><b>Tabouli</b><i>ta·boo·lee</i><p>Chopped parsley, tomato, onion, lemon and olive oil.</p><span class="pr">$10.99</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <h2 class="big sec-title">The Whole Menu</h2>
+    <p class="sec-sub">No surprises. Here's everything.</p>
+    <div class="menu-grid" id="menu-grid"></div>
+  </div>
+</section>
+
+<section id="catering">
+  <div class="wrap catering">
+    <div class="cat-stack">
+      <div class="pol c1"><span class="tape"></span><div class="ph"><img src="assets/catering-trays.jpg" alt=""></div><p>party mode</p></div>
+      <div class="pol c2"><span class="tape"></span><div class="ph"><img src="assets/shawarma-trays.jpg" alt=""></div><p>feeds the whole family</p></div>
+      <div class="pol c3"><span class="tape"></span><div class="ph"><img src="assets/salad-tray.jpg" alt=""></div><p>salads too</p></div>
+    </div>
+    <div>
+      <h2 class="big sec-title">Big trays<br>for big days.</h2>
+      <p class="sec-sub">Birthdays, office lunches, Eid, game day. We'll fill the table with shawarma, mix grill, chicken and salads.</p>
+      <a class="stamp pink" href="tel:+17343263800">Call for catering →</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2 class="big sec-title">Camera roll</h2>
+    <div class="gallery">
+      <div><img src="assets/grilled-wraps.jpg" alt=""></div>
+      <div><img src="assets/veggie-combo.jpg" alt=""></div>
+      <div><img src="assets/chicken-salad.jpg" alt=""></div>
+      <div><img src="assets/potatoes.jpg" alt=""></div>
+      <div><img src="assets/trays-pickles.jpg" alt=""></div>
+      <div><img src="assets/steak.jpg" alt=""></div>
+      <div><img src="assets/chicken-burger.jpg" alt=""></div>
+      <div><img src="assets/wrap-cut.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <h2 class="big sec-title">Come hungry.</h2>
+    <div class="ticket">
+      <div><small>Address</small><p><a href="https://maps.google.com/?q=35600+E+Michigan+Ave+Wayne+MI+48184">35600 E Michigan Ave<br>Wayne, MI 48184</a></p></div>
+      <div><small>Phone</small><p><a href="tel:+17343263800">(734) 326-3800</a></p></div>
+    </div><br>
+    <a class="stamp" href="https://maps.google.com/?q=35600+E+Michigan+Ave+Wayne+MI+48184">Get directions →</a>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© Billi's Shawarma</span><a href="https://www.facebook.com/p/Billis-Shawarma-100028375973297/">Facebook ↗</a></div></footer>
+
+<script src="assets/menu.js"></script>
+<script>
+  renderMenu(document.getElementById("menu-grid"), function (c, items) {
+    return '<div class="card"><h3>' + c.name + '</h3>' +
+      items.map(function (i) { return '<div class="row"><span>' + i[0] + '</span><span>' + i[1] + '</span></div>'; }).join("") + '</div>';
+  });
+</script>
+</body>
+</html>
